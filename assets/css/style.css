@@ -1,7 +1,7 @@
 * {
-    margin    : 0;
-    padding   : 0;
-    box-sizing: border-box;
+    margin     : 0;
+    padding    : 0;
+    box-sizing : border-box;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
@@ -10,17 +10,17 @@ h1 {
     margin    : 20px;
 }
 
-#playingArea{
-    /* font-size : 4rem; */
-}
+#playingArea {}
 
 #container {
     width           : 600px;
     height          : 600px;
     margin          : 0 auto;
     background-color: gray;
-    padding         : 10px;
+    padding         : 5px;
     border-radius   : 5px;
+
+    position: relative;
 
     display        : flex;
     flex-wrap      : wrap;
@@ -54,9 +54,36 @@ h1 {
     text-align: center;
     margin    : 20px auto;
     font-size : 2rem;
+    
 }
 
 #now {
     font-weight: 900;
     color      : red;
+}
+
+#reset {
+    display      : block;
+    margin       : 0 auto;
+    padding      : 10px;
+    font-size    : 1.5rem;
+    border-radius: 5px;
+    border       : 0;
+    outline      : none;
+    cursor       : pointer;
+}
+
+#reset:hover {
+    background-color: tomato;
+    color           : white;
+
+}
+
+#line {
+    width           : 580px;
+    height          : 3px;
+    background-color: black;
+    position        : absolute;
+    visibility      : hidden;
+    /* transform    : rotate(45deg); */
 }

@@ -3,18 +3,27 @@
 // 22 Dec 2021 
 
 let playerTurn = 'X';
+let gameOver = false;
+
 const info = document.getElementById('playingInfo');
+const now = document.getElementById('now');
+const line = document.getElementById('line');
+const reset = document.getElementById('reset');
 const box = document.getElementsByClassName('box');
+
 // console.log(box);
 // console.log(box[0].children);
 // console.log(box[0].firstChild);
 
 // console.log(Array.from(box))
 
+const changeTurn = () => {
+    return playerTurn === 'X' ? 'O' : 'X';
+}
+
 const checkWin = () => {
 
     let boxText = document.querySelectorAll('.boxText');
-    console.log(boxText[0]);
 
     let winingPossible = [
 
@@ -30,19 +39,20 @@ const checkWin = () => {
         [2, 5, 8],
     ];
 
-    winingPossible.forEach( v => {
-        if(boxText){
-
-        }    
-        console.log(v)
+    winingPossible.forEach(v => {
+        if ((boxText[v[0]].innerHTML === boxText[v[1]].innerHTML) &&
+            (boxText[v[2]].innerHTML === boxText[v[1]].innerHTML) &&
+            (boxText[v[0]].innerHTML !== '')) {
+            info.innerHTML = boxText[v[0]].innerHTML + ' is Win';
+            info.style.color = 'green';
+            info.style.fontWeight = '900';
+            line.style.visibility = 'visible';;
+            gameOver = true;
+        }
+        
     })
-} 
-checkWin();
-
-const changeTurn = () => {
-    return playerTurn === 'X' ? 'O' : 'X';
 }
-
+//
 
 Array.from(box).forEach(parentElement => {
 
@@ -52,10 +62,33 @@ Array.from(box).forEach(parentElement => {
         if (childText.innerHTML === '') {
             childText.innerHTML = playerTurn;
             playerTurn = changeTurn();
-            info.innerHTML = `Now Turn to : <span id="now">${playerTurn}</span>`;;
+            checkWin();
+        }
+
+        if (!gameOver) {
+            info.style.visibility = 'visible';
+            now.innerHTML = playerTurn;
         }
 
         console.log(childText.innerHTML);
     });
+
+})
+
+
+reset.addEventListener('click', () => {
+    line.style.visibility = 'hidden';
+    info.style.visibility = 'hidden';
+    info.innerHTML = '';
+    console.log(info.innerHTML)
+
+    playerTurn = 'X';
+    gameOver = false;
+
+    Array.from(box).forEach(parentElement => {
+
+        let childText = parentElement.querySelector('.boxText');
+        childText.innerHTML = ''
+    })
 
 })
