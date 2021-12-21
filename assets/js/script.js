@@ -46,7 +46,7 @@ const checkWin = () => {
             info.innerHTML = boxText[v[0]].innerHTML + ' is Win';
             info.style.color = 'green';
             info.style.fontWeight = '900';
-            line.style.visibility = 'visible';;
+            line.style.visibility = 'visible';
             gameOver = true;
         }
         
@@ -66,7 +66,7 @@ Array.from(box).forEach(parentElement => {
         }
 
         if (!gameOver) {
-            info.style.visibility = 'visible';
+            info.style.display = 'block';
             now.innerHTML = playerTurn;
         }
 
@@ -77,18 +77,19 @@ Array.from(box).forEach(parentElement => {
 
 
 reset.addEventListener('click', () => {
-    line.style.visibility = 'hidden';
-    info.style.visibility = 'hidden';
-    info.innerHTML = '';
-    console.log(info.innerHTML)
+    // line.style.visibility = 'hidden';
+    // info.style.display = 'none';
+    // info.innerHTML = ' ';
 
-    playerTurn = 'X';
-    gameOver = false;
 
-    Array.from(box).forEach(parentElement => {
+    // playerTurn = 'X';
+    // gameOver = false;
 
-        let childText = parentElement.querySelector('.boxText');
-        childText.innerHTML = ''
-    })
+    // Array.from(box).forEach(parentElement => {
 
+    //     let childText = parentElement.querySelector('.boxText');
+    //     childText.innerHTML = ''
+    // })
+
+    location.reload();
 })

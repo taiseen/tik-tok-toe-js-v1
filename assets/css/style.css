@@ -54,7 +54,7 @@ h1 {
     text-align: center;
     margin    : 20px auto;
     font-size : 2rem;
-    
+    display   : block;
 }
 
 #now {
